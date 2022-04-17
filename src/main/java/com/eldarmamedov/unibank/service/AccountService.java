@@ -13,7 +13,6 @@ import com.eldarmamedov.unibank.repository.CurrencyRateRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -62,7 +61,7 @@ public class AccountService {
             sendingAmount = ((Double) (moneyTransferDto.getAmount() * currencyRate.getRate())).longValue();
         }
 
-        senderAccount.setBalance(senderAccBalance - sendingAmount);
+        senderAccount.setBalance(senderAccBalance - moneyTransferDto.getAmount());
         receiverAccount.setBalance(receiverAccBalance + sendingAmount);
 
         accountRepository.save(senderAccount);
