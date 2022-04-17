@@ -23,5 +23,4 @@ public class CurrencyRateService {
 
         return currencyRateDto;
     }
-
 }
